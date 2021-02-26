@@ -13,6 +13,7 @@
 		99435A7425E98A2C00085E1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99435A7225E98A2C00085E1B /* Main.storyboard */; };
 		99435A7625E98A2F00085E1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99435A7525E98A2F00085E1B /* Assets.xcassets */; };
 		99435A7925E98A2F00085E1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99435A7725E98A2F00085E1B /* LaunchScreen.storyboard */; };
+		99435A8825E9906A00085E1B /* instagram_assets in Resources */ = {isa = PBXBuildFile; fileRef = 99435A8725E9906900085E1B /* instagram_assets */; };
 		D13F4B9344FC5D96B90B4EC4 /* Pods_Parstagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3963D569B77EDC204C4A4174 /* Pods_Parstagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		99435A7525E98A2F00085E1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99435A7825E98A2F00085E1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99435A7A25E98A2F00085E1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99435A8725E9906900085E1B /* instagram_assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = instagram_assets; sourceTree = "<group>"; };
 		9C8CB3B603DB410E2D8C9178 /* Pods-Parstagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parstagram.debug.xcconfig"; path = "Target Support Files/Pods-Parstagram/Pods-Parstagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +56,7 @@
 		99435A6025E98A2B00085E1B = {
 			isa = PBXGroup;
 			children = (
+				99435A8725E9906900085E1B /* instagram_assets */,
 				99435A6B25E98A2C00085E1B /* Parstagram */,
 				99435A6A25E98A2C00085E1B /* Products */,
 				59A7267AA4CFD8062D074B04 /* Pods */,
@@ -150,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99435A8825E9906A00085E1B /* instagram_assets in Resources */,
 				99435A7925E98A2F00085E1B /* LaunchScreen.storyboard in Resources */,
 				99435A7625E98A2F00085E1B /* Assets.xcassets in Resources */,
 				99435A7425E98A2C00085E1B /* Main.storyboard in Resources */,
