@@ -15,6 +15,7 @@
 		99435A8825E9906A00085E1B /* instagram_assets in Resources */ = {isa = PBXBuildFile; fileRef = 99435A8725E9906900085E1B /* instagram_assets */; };
 		9949735425ED6FC500DE4ACD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9949735325ED6FC500DE4ACD /* LoginViewController.swift */; };
 		9949735725ED6FD500DE4ACD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9949735625ED6FD500DE4ACD /* HomeViewController.swift */; };
+		9949735E25ED7C1F00DE4ACD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9949735D25ED7C1F00DE4ACD /* CameraViewController.swift */; };
 		D13F4B9344FC5D96B90B4EC4 /* Pods_Parstagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3963D569B77EDC204C4A4174 /* Pods_Parstagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		99435A8725E9906900085E1B /* instagram_assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = instagram_assets; sourceTree = "<group>"; };
 		9949735325ED6FC500DE4ACD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9949735625ED6FD500DE4ACD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9949735D25ED7C1F00DE4ACD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9C8CB3B603DB410E2D8C9178 /* Pods-Parstagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parstagram.debug.xcconfig"; path = "Target Support Files/Pods-Parstagram/Pods-Parstagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 			children = (
 				9949735325ED6FC500DE4ACD /* LoginViewController.swift */,
 				9949735625ED6FD500DE4ACD /* HomeViewController.swift */,
+				9949735D25ED7C1F00DE4ACD /* CameraViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9949735425ED6FC500DE4ACD /* LoginViewController.swift in Sources */,
+				9949735E25ED7C1F00DE4ACD /* CameraViewController.swift in Sources */,
 				99435A6D25E98A2C00085E1B /* AppDelegate.swift in Sources */,
 				99435A6F25E98A2C00085E1B /* SceneDelegate.swift in Sources */,
 				9949735725ED6FD500DE4ACD /* HomeViewController.swift in Sources */,
