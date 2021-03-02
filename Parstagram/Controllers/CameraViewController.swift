@@ -61,6 +61,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             picker.sourceType = .camera
+//            present(picker, animated: true)
         } else {
             picker.sourceType = .photoLibrary
         }
@@ -68,16 +69,23 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         present(picker, animated: true, completion: nil) // will show photo album
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+//        picker.dismiss(animated: true, completion: nil)
         
         let image = info[.editedImage] as! UIImage
         
         let size = CGSize(width: 300, height: 300)
         let scaledImage = image.af_imageScaled(to: size)
         
+        dismiss(animated: true, completion: nil)
+
         captureImageView.image = scaledImage
         
-        dismiss(animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation
@@ -89,4 +97,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     */
 
+    
 }
+

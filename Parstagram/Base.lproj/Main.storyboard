@@ -146,7 +146,7 @@
                     <navigationItem key="navigationItem" id="zCL-y9-w61">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="J0O-Qi-aO8">
                             <connections>
-                                <segue destination="yCd-D4-8Qk" kind="presentation" modalPresentationStyle="fullScreen" id="FSM-V8-2MV"/>
+                                <segue destination="yCd-D4-8Qk" kind="show" id="FSM-V8-2MV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -192,6 +192,7 @@
                         <viewLayoutGuide key="safeArea" id="NM0-jx-kxv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="f8e-f6-ToV"/>
                     <connections>
                         <outlet property="captionTextField" destination="LeD-1u-sYT" id="hKI-sD-HEK"/>
                         <outlet property="captureImageView" destination="duX-oF-fXJ" id="Mqk-DX-fKV"/>
