@@ -146,7 +146,7 @@
                     <navigationItem key="navigationItem" id="zCL-y9-w61">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="J0O-Qi-aO8">
                             <connections>
-                                <segue destination="yCd-D4-8Qk" kind="show" id="FSM-V8-2MV"/>
+                                <segue destination="yCd-D4-8Qk" kind="presentation" modalPresentationStyle="fullScreen" id="FSM-V8-2MV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
