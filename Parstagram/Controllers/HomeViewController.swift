@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let comments = (post["comments"] as? [PFObject]) ?? []
         
         
-        return comments.count + 1
+        return comments.count + 2
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,15 +73,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let post = posts[indexPath.section]
         let comments = (post["comments"] as? [PFObject]) ?? []
-        print(indexPath.section)
+//        print(indexPath.section)
         
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
 
             let user = post["author"] as! PFUser
-//            cell.usernameLabel.text = "@\(user.username ?? "User")"
-            cell.usernameLabel.text = user.username
+            cell.usernameLabel.text = "@\(user.username ?? "User")"
 
             cell.captionLabel.text = post["caption"] as? String
             
@@ -94,7 +93,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         
         }
-        else { // if indexPath.section <= comments.count {
+        else if indexPath.row <= comments.count {
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
 
 
@@ -102,27 +102,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.commentLabel.text = comment["text"] as? String
 
             let user = comment["author"] as? PFUser
-            cell.nameLabel.text = user?.username
+            cell.nameLabel.text = "@\(user?.username ?? "User")"
+
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
 
             return cell
         }
-//        else if indexPath.row <= comments.count {
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
-//
-//
-//            let comment = comments[indexPath.section - 1]
-//            cell.commentLabel.text = comment["text"] as? String
-//
-//            let user = comment["author"] as? PFUser
-//            cell.nameLabel.text = user?.username
-//
-//            return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
-//
-//            return cell
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
