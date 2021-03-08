@@ -169,9 +169,31 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="commentLabel" destination="iv9-EK-1pS" id="hf2-5n-aln"/>
-                                            <outlet property="nameLabel" destination="JGU-Z8-I6n" id="TSh-wq-UCJ"/>
+                                            <outlet property="commentLabel" destination="iv9-EK-1pS" id="pJo-3X-Gv8"/>
+                                            <outlet property="nameLabel" destination="JGU-Z8-I6n" id="EK5-83-9aI"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddComment" id="Uiw-OA-c2H">
+                                        <rect key="frame" x="0.0" y="569.5" width="375" height="37.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uiw-OA-c2H" id="FsR-qF-FUd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="37.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a comment..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wE0-nj-7tt">
+                                                    <rect key="frame" x="16" y="8" width="351" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="wE0-nj-7tt" secondAttribute="trailing" constant="8" id="EHu-Gj-Sis"/>
+                                                <constraint firstItem="wE0-nj-7tt" firstAttribute="top" secondItem="FsR-qF-FUd" secondAttribute="top" constant="8" id="MYI-Zc-En2"/>
+                                                <constraint firstItem="wE0-nj-7tt" firstAttribute="leading" secondItem="FsR-qF-FUd" secondAttribute="leading" constant="16" id="O1F-nJ-4iN"/>
+                                                <constraint firstAttribute="bottom" secondItem="wE0-nj-7tt" secondAttribute="bottom" constant="8" id="cQa-Qk-4sz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

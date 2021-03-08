@@ -8,10 +8,13 @@
 import UIKit
 import Parse
 import AlamofireImage
+import MessageInputBar
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    let commentBar = MessageInputBar()
+    var showsCommentBar = false
     
     var posts = [PFObject]()
     
@@ -20,6 +23,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.keyboardDismissMode = .interactive
         // Do any additional setup after loading the view.
     }
     
@@ -42,6 +47,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    override var inputAccessoryView: UIView? {
+        return commentBar
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return showsCommentBar
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -60,14 +73,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let post = posts[indexPath.section]
         let comments = (post["comments"] as? [PFObject]) ?? []
-
-        if indexPath.section == 0 {
+        print(indexPath.section)
+        
+        
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-            
-            
+
             let user = post["author"] as! PFUser
-            cell.usernameLabel.text = "@\(user.username ?? "User")"
-            
+//            cell.usernameLabel.text = "@\(user.username ?? "User")"
+            cell.usernameLabel.text = user.username
+
             cell.captionLabel.text = post["caption"] as? String
             
             let imageFile = post["image"] as! PFFileObject
@@ -77,27 +92,43 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.photoView.af_setImage(withURL: url)
             
             return cell
+        
         }
-        else {
+        else { // if indexPath.section <= comments.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
-            
-            print(indexPath.section - 1)
-            let comment = comments[indexPath.section - 1] // the 0th index is the Post; this equals the first comment
-            
+
+
+            let comment = comments[indexPath.row - 1]
             cell.commentLabel.text = comment["text"] as? String
-            
-            
-            let user = comment["author"] as! PFUser
-            cell.nameLabel.text = user.username
-            
+
+            let user = comment["author"] as? PFUser
+            cell.nameLabel.text = user?.username
+
             return cell
         }
+//        else if indexPath.row <= comments.count {
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
+//
+//
+//            let comment = comments[indexPath.section - 1]
+//            cell.commentLabel.text = comment["text"] as? String
+//
+//            let user = comment["author"] as? PFUser
+//            cell.nameLabel.text = user?.username
+//
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCommentCell")!
+//
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.section]
         
-        let comment = PFObject(className: "Comments") // creates an object if not created
+        let comment = PFObject(className: "comments") // creates an object if not created
         comment["text"] = "Very cool! Thanks for sharing!"
         comment["post"] = post
         comment["author"] = PFUser.current()!
