@@ -183,7 +183,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-wY-Bwo">
                                 <rect key="frame" x="24" y="406" width="326" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Publish"/>
                                 <connections>
                                     <action selector="onSubmitButton:" destination="yCd-D4-8Qk" eventType="touchUpInside" id="10T-9L-TVM"/>
                                 </connections>
@@ -210,7 +210,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dgA-8a-IlJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YbJ-4L-OuK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavController" automaticallyAdjustsScrollViewInsets="NO" id="YbJ-4L-OuK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VIy-pe-bRe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
