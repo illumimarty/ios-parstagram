@@ -44,7 +44,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         posts.count
     }
     
@@ -66,6 +65,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.photoView.af_setImage(withURL: url)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        
+        let comment = PFObject(className: "Comments") // creates an object if not created
+        comment["text"] = "Very cool! Thanks for sharing!"
+        comment["post"] = post
+        comment["author"] = PFUser.current()!
+        
+        post.add(comment, forKey: "comments") // adds comment to the post
+        
+        post.saveInBackground { (success, error) in
+            if success {
+                print("saved comment successfully!")
+            } else {
+                print("error saving comment :(")
+            }
+        }
     }
     
     // User can log out
