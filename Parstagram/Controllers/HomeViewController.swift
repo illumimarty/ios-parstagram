@@ -10,17 +10,23 @@ import Parse
 import AlamofireImage
 import MessageInputBar
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MessageInputBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     let commentBar = MessageInputBar()
     var showsCommentBar = false
     
     var posts = [PFObject]()
+    var selectedPost: PFObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        commentBar.inputTextView.placeholder = "Add Comment Here..."
+        
+        commentBar.sendButton.title = "Post"
+        commentBar.delegate = self
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -52,11 +58,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    @objc func keyboardWillBeHidden (note: Notification) {
+    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+        // Create the comment
+        
+        let comment = PFObject(className: "Comments")
+        comment["text"] = text
+        comment["post"] = selectedPost
+        comment["author"] = PFUser.current()!
+
+        selectedPost.add(comment, forKey: "comments") // adds comment to the post
+
+        selectedPost.saveInBackground { (success, error) in
+            if success {
+                print("saved comment successfully!")
+            } else {
+                print("error saving comment :(")
+            }
+        }
+        
+        tableView.reloadData()
+        
+        // Clear and dismiss input
         commentBar.inputTextView.text = nil
         showsCommentBar = false
         becomeFirstResponder()
-        print("boom")
+        commentBar.inputTextView.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillBeHidden (note: Notification) {
+        commentBar.inputTextView.text = nil
+        showsCommentBar = false
+//        becomeFirstResponder()
+        commentBar.inputTextView.resignFirstResponder()
+
+//        print("boom")
         
     }
     override var inputAccessoryView: UIView? {
@@ -134,20 +169,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             showsCommentBar = true
             becomeFirstResponder()
             commentBar.inputTextView.becomeFirstResponder()
+            
+            selectedPost = post
         }
-//        comment["text"] = "Very cool! Thanks for sharing!"
-//        comment["post"] = post
-//        comment["author"] = PFUser.current()!
-//
-//        post.add(comment, forKey: "comments") // adds comment to the post
-//
-//        post.saveInBackground { (success, error) in
-//            if success {
-//                print("saved comment successfully!")
-//            } else {
-//                print("error saving comment :(")
-//            }
-//        }
     }
     
     // User can log out
