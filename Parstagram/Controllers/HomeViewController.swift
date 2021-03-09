@@ -25,6 +25,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         tableView.keyboardDismissMode = .interactive
+        
+        let center = NotificationCenter.default
+//        center.addObserver(self, selector: #selector(keyboardWillBeHidden(note:)), name: UIResponder.keyboardWillHideNotification, object: nil) // observe an event. when it happens, the keyboard will hide
+        
+        center.addObserver(self, selector: #selector(keyboardWillBeHidden(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -47,6 +52,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @objc func keyboardWillBeHidden (note: Notification) {
+        commentBar.inputTextView.text = nil
+        showsCommentBar = false
+        becomeFirstResponder()
+        print("boom")
+        
+    }
     override var inputAccessoryView: UIView? {
         return commentBar
     }
@@ -114,21 +126,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+
+//        let comment = PFObject(className: "comments") // creates an object if not created
         
-        let comment = PFObject(className: "comments") // creates an object if not created
-        comment["text"] = "Very cool! Thanks for sharing!"
-        comment["post"] = post
-        comment["author"] = PFUser.current()!
-        
-        post.add(comment, forKey: "comments") // adds comment to the post
-        
-        post.saveInBackground { (success, error) in
-            if success {
-                print("saved comment successfully!")
-            } else {
-                print("error saving comment :(")
-            }
+        if indexPath.row == comments.count + 1 {
+            showsCommentBar = true
+            becomeFirstResponder()
+            commentBar.inputTextView.becomeFirstResponder()
         }
+//        comment["text"] = "Very cool! Thanks for sharing!"
+//        comment["post"] = post
+//        comment["author"] = PFUser.current()!
+//
+//        post.add(comment, forKey: "comments") // adds comment to the post
+//
+//        post.saveInBackground { (success, error) in
+//            if success {
+//                print("saved comment successfully!")
+//            } else {
+//                print("error saving comment :(")
+//            }
+//        }
     }
     
     // User can log out
