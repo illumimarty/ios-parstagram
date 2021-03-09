@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
-        // Create the comment
+        // Create the comment!
         
         let comment = PFObject(className: "Comments")
         comment["text"] = text
